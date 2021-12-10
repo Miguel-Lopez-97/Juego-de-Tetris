@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,36 +9,44 @@
     <script src="app.js"></script>
     <title>Document</title>
 </head>
-<body>
-    <div class="content">
-        <header>
-            <h1>TETRIS</h1>
-            <input type="button" class="button" id="button__refresh1" value="REFRESH">    
-        </header>
-        <div class="">
-            <div class="counter"   id="counter__time">tiempo</div>
-            <div class="">
-                <input type="button" class="button" id="button__play"   value="||">
+
+<body onload="init();">
+    <header>
+        <h1>TETRIS</h1>
+        <input type="button" class="button" id="button__refresh1" value="REFRESH">
+    </header>
+    <main>
+        <div class="gameTop">
+            <div class="counter" id="counter__time">
+                <h2>tiempo</h2>
             </div>
-            <div class="counter"    id="counter__points"> puntos</div>
+            <div class="">
+                <input type="button" class="button" id="button__play" value="||">
+            </div>
+            <div class="counter" id="counter__points">
+                <h2>Puntos</h2>
+            </div>
         </div>
         <div class="gameBoard">
-            <canvas id="canva"></canvas>
+            <canvas id="canva" width="375" height="475"></canvas>
         </div>
         <div class="gameButton">
             <div>
-                <input type="button" class="button" id="button__refresh2" value="REFRESH">    
+                <input type="button" class="button" id="button__refresh2" value="REFRESH">
             </div>
             <div class="gameButton playButton">
-            <input type="button" class="button" id="button__left"   value="<-">
-            <input type="button" class="button" id="button__down"   value="|">
-            <input type="button" class="button" id="button__rigth"  value="->">
+                <input type="button" class="button" id="button__left" value="<-">
+                <input type="button" class="button" id="button__down" value="|">
+                <input type="button" class="button" id="button__rigth" value="->">
             </div>
             <div class="gameButton rotateButton">
-            <input type="button" class="button" id="button__rotate" value="rot">
+                <input type="button" class="button" id="button__rotate" value="rot">
             </div>
         </div>
-        <footer></footer>
-    </div>
+    </main>
+    <footer>
+        
+    </footer>
 </body>
+
 </html>
