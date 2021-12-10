@@ -1,0 +1,8 @@
+canvas{
+    width: 60vw;
+    height: 70vh;
+    border: 1vw solid red;
+}
+h1{
+    font-size: max(36px, 15vw);
+}

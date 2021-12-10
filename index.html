@@ -9,6 +9,35 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div class="content">
+        <header>
+            <h1>TETRIS</h1>
+            <input type="button" class="button" id="button__refresh1" value="REFRESH">    
+        </header>
+        <div class="">
+            <div class="counter"   id="counter__time">tiempo</div>
+            <div class="">
+                <input type="button" class="button" id="button__play"   value="||">
+            </div>
+            <div class="counter"    id="counter__points"> puntos</div>
+        </div>
+        <div class="gameBoard">
+            <canvas id="canva"></canvas>
+        </div>
+        <div class="gameButton">
+            <div>
+                <input type="button" class="button" id="button__refresh2" value="REFRESH">    
+            </div>
+            <div class="gameButton playButton">
+            <input type="button" class="button" id="button__left"   value="<-">
+            <input type="button" class="button" id="button__down"   value="|">
+            <input type="button" class="button" id="button__rigth"  value="->">
+            </div>
+            <div class="gameButton rotateButton">
+            <input type="button" class="button" id="button__rotate" value="rot">
+            </div>
+        </div>
+        <footer></footer>
+    </div>
 </body>
 </html>
