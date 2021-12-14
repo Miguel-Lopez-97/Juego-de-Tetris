@@ -329,13 +329,34 @@ function drawScenary() {
     }
 }
 
+//Tiempo
+let time_box
+let seg=0
 
+function timeInit(){
+    let time0 = new Date();
+    this.hoursInit = time0.getHours();
+    this.minutesInit = time0.getMinutes();
+    this.segInit = time0.getSeconds();
+}
+
+function time(){
+    let timeNow = new Date();
+    this.hoursNow = timeNow.getHours();
+    this.minutesNow  = timeNow.getMinutes();
+    this.segNow  = timeNow.getSeconds();
+    this.hours = this.hoursNow-this.hoursInit
+    this.minutes = this.minutesNow-this.minutesInit
+    this.seg = Math.abs(this.segInit-this.segNow)
+    time_box.innerHTML=this.hours+':'+this.minutes+':'+this.seg}
 
 let player;
 
 function init(){
     canvas=document.getElementById("canva")
     ctx=canvas.getContext("2d")
+    time_box=document.getElementById("counter_time")
+    timeInit()
     
     player = new newBlocks()
     player.aleatorio()
@@ -356,4 +377,5 @@ function init(){
 function principal(){
     drawScenary()
     player.draw()
+    time()
 }
