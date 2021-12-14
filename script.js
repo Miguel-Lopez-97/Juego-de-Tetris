@@ -22,7 +22,15 @@ let scenary = new Array(rows)
             for( let m=0; m<columns; m++){
                 scenary[n][m]=0;
             }
-    }
+        }
+    for (let n=20; n<21;n++){
+        scenary[n]=new Array(columns)
+            for( let m=0; m<columns; m++){
+                scenary[n][m]=1;
+            }
+        }
+    
+
     //Size of Cube
 
 let widthC = 25;
@@ -34,50 +42,122 @@ let newBlocks = function () {
 
     this.x =5
     this.y = 0
-    ctx.save()
+
     //Rotacion
     this.rot = Math.ceil(Math.random()*4)
+   
     //Largo de la pieza
     this.l
+    
     //Ancho de la pieza
     this.n
-    this.numero = 0
+    
+    // variables de colision
+    this.colision = false
+    this.colisionLeft = false
+    this.colisionRight = false
+    this.blockFull = 0
+    
+    //funcion aleatorio, permite generar un input diferente para dibujar cada pieza nueva
 
     this.aleatorio = function(){
         this.newBlock = Math.ceil(Math.random()*7)
-        console.log(this.newBlock)
         return this.newBlock
     }
 
-    
+    //Función de rotación, asigna un valor a la variable rot en función, para rotar la figura
 
     this.rotate = function () {
-
-        if(this.rot>=0 &&this.rot<4){this.rot++}
+        if(this.rot>=0 &&this.rot<4 &&this.colision==false){
+            this.rot++}
         else{this.rot=1}
-        console.log(this.rot)
         return this.rot}
 
+    //Función de dibujado de bloque y colición, cada ficha esta dada por una serie de coordenadas en su respectivo
+    //array, lo que hace esta función ciclica es dibujar la ficha a partir de sus coordenadas y se actualize 
+    //al cambio de posición, asi como verificar que no halla una colisón en el movimiento
+
     this.drawBlock = function(a,c,b,d){
-        for (i=c;i <a ; i++){
+       for (i=c;i <a ; i++){ //recorre las posiciones de la ficha en y luego en x y las dibuja
             for (j=d;j <b ; j++){
                 ctx.fillStyle   =   block
                 ctx.fillRect(   (this.x+j)*widthC,  (this.y+i)*heightC,  widthC, heightC)
-                if(this.colision==true){
-                    scenary[this.y+i][this.x+j]=1
-                    console.log("finish"+this.numero)
-                    this.numero++
-                    }  
-               }
+
+                //verifica la coliciòn lateralmente
+                if(scenary[this.y+i+1][this.x+j]==0){
+                    //Izq
+                    if(scenary[this.y+i][this.x+j-1]==1)                
+                    {   this.colisionLeft = true
+                        this.colisionRight = false
+                        }
+                    //Der
+                    else if(scenary[this.y+i][this.x+j+1]==1){
+                        this.colisionRight = true
+                        this.colisionLeft = false
+                      }
+                }
+                //verifica la colición verticalmente
+                else if(scenary[this.y+i+1][this.x+j]==1) {
+                        this.colision = true
+                        this.colisionLeft = true
+                        this.colisionRight = true
+                        //una vez detectada, realiza un ciclo iterativo para asignar la posición de cada
+                        //parte de la ficha a la matriz scenary con un 1
+                        for (i=c;i <a ; i++){
+                            for (j=d;j <b ; j++){
+                                scenary[this.y+i][this.x+j]=1
+                            }
+                        }
+                        
+                }        
+                
+            }
         }
-        
-        
-    }  
+    }
+
+    //Mueve la ficha a la izquierda, teniendo claro que no colisione y el limite izq del canvas
+    
+    this.left = function(){
+        if(this.x>0 && this.colisionLeft==false)
+        //si permite el movimiento retorna falso el valor de la colisión contrario a este movimiento
+        {   this.x--
+            this.colisionRight=false
+            this.colision=false
+            }
+
+        else if(this.colision=true){
+            this.x
+        }       
+    }
+
+    //Mueve la ficha a bajo, teniendo claro que no colisione
+    this.down = function(){
+        //si permite el movimiento retorna falso el valor de la colisión contrario a este movimiento
+        if(this.colision==false)
+            {this.y++
+            this.colisionLeft=false
+            this.colisionRight=false
+            }
+
+        else{this.y
+            this.drawNew()
+            }
+    }
+    //Mueve la ficha a la derecha, teniendo claro que no colisione y el limite der del canvas
+    this.right = function(){     
+        //si permite el movimiento retorna falso el valor de la colisión contrario a este movimiento
+        if(this.x+l<scenary[this.y].length  && this.colisionRight == false)
+        {   this.x++
+            this.colisionLeft=false
+            this.colision=false
+           }
+        else{
+            this.x}     
+    }
 
     this.draw = function(){
 
-        if(this.numero<10){
-
+    // dibuja apartir del numero aleatorio la figura nueva, teniendo en cuenta su rotación
         switch(this.newBlock){
             //linea
             case 1:
@@ -101,7 +181,8 @@ let newBlocks = function () {
             break
             //L 
             case 3:
-                if(this.rot==1) {this.drawBlock(1,0,3,0)
+                if(this.rot==1) {
+                    this.drawBlock(1,0,3,0)
                     this.drawBlock(2,1,3,2)
                     l=3
                     n=2}
@@ -203,56 +284,35 @@ let newBlocks = function () {
                     n=3}
             break
         }
-        }
+        
 
     }
 
-    this.margins = function(y,x){
-        let colision = false
-        if (scenary[y][x] == 1)
-            {colision   = true}
-            
-        return (colision)
-    }
-
+    // dibuja nnuevamente en el escenario una ficha
     this.drawNew = function(){
-        if(this.numero>10){
             this.x=5
             this.y=0
             this.aleatorio()
             this.draw()
-            this.numero=0
             this.colision=false
+            this.colisionLeft=false
+            this.colisionRight=false
+            
         }
-        
-    }
 
-    this.down = function(){
-        if(this.y+n<scenary.length  && this.margins(this.y,this.x+n) == false)
-            {this.y++
-            this.colision = false}
-        else{this.y
-            this.colision = true
-            this.drawNew()
-            }
-    }
+    this.completeScenary = function(){
 
-    this.left = function(){
-        if(this.x-1>=0 && this.margins(this.y,this.x-1) == false)
-        {   this.x--
-            this.colision = false}
-        else{this.x}       
-    }
-
-    this.right = function(){     
-        if(this.x+l<scenary[this.y].length && this.margins(this.y,this.x+l) == false)
-        {   this.x++
-            this.colision = false}
-        else{this.x}     
-    }
-
+            for(i=0;i<scenary.length-1;i++)
+                { for(j=0;j<scenary[i].length;    x++){
+                    if(this.blockFull<scenary[i].length){
+                        if(scenary[i][j]==1){
+                        this.blockFull++}
+                    }
+                    else{scenary[i][j]=0}
+                }}
+        }
 }
-
+// colorea el escenario con las fichas guardadas
 function drawScenary() {
     let color;
 
@@ -268,6 +328,8 @@ function drawScenary() {
             }
     }
 }
+
+
 
 let player;
 
@@ -287,12 +349,11 @@ function init(){
 
     setInterval(
         function () {principal()},
-        1000/FPS)
+        200/FPS)
     
 }
 
 function principal(){
     drawScenary()
     player.draw()
-
 }
