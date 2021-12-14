@@ -6,7 +6,12 @@
 h1{
     font-size: max(36px, 15vw);
 }
+<<<<<<< HEAD
 h2{ text-align: center;}
+=======
+h2{ text-align: center;
+    align-items: center;}
+>>>>>>> 44d2512688677730a7228c1f641bdb1845a3fb54
 
 body{
     background-color: black;
