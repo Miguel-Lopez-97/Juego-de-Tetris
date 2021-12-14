@@ -5,47 +5,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
-    <script src="app.js"></script>
+    <script src="script.js"></script>
     <title>Document</title>
 </head>
 
 <body onload="init();">
     <header>
-        <h1>TETRIS</h1>
-        <input type="button" class="button" id="button__refresh1" value="REFRESH">
+        <img id="logo" src="img/tetris_logo.png" alt="" srcset="">
+        <button class="button" id="refresh1" onclick="up()">
+            <img src="img/refresh.png" alt="">
+        </button>
     </header>
     <main>
-        <div class="gameTop">
-            <div class="counter" id="counter__time">
-                <h2>tiempo</h2>
+        <section class="gameTop">
+            <div class="counter" id="counter_time">
+                <h2>Time</h2>
             </div>
             <div class="">
-                <input type="button" class="button" id="button__play" value="||">
+                <button class="button" id="pause">
+                    <img src="img/pause.png" alt="">
+                </button>
             </div>
-            <div class="counter" id="counter__points">
-                <h2>Puntos</h2>
+            <div class="counter" id="counter_points">
+                <h2>Points</h2>
             </div>
-        </div>
-        <div class="gameBoard">
+        </section>
+        <section class="gameBoard">
             <canvas id="canva" width="375" height="500"></canvas>
-        </div>
-        <div class="gameButton">
-            <div>
-                <input type="button" class="button" id="button__refresh2" value="REFRESH">
+        </section>
+        <section class="gameButton">
+            <div id="refresh">
+                <button class="button" id="button__refresh2">
+                    <img id="refreshpng" src="img/refresh.png" alt="">
+                    <p>REFRESH</p>
+                </button>
             </div>
             <div class="gameButton playButton">
-                <input type="button" class="button" id="button__left" value="<-">
-                <input type="button" class="button" id="button__down" value="|">
-                <input type="button" class="button" id="button__rigth" value="->">
+                <button class="button" id="left" onclick="left()"><img class="button" src="img/left.png" alt=""> </button>
+                <button class="button" id="down" onclick="down()"><img class="button" src="img/down.png" alt=""> </button>
+                <button class="button" id="right" onclick="right()"><img class="button" src="img/right.png" alt=""> </button>
             </div>
             <div class="gameButton rotateButton">
-                <input type="button" class="button" id="button__rotate" value="rot">
+                <button class="button" id="up" onclick="up()"><img src="img/rotate.png" alt=""> </button>
             </div>
-        </div>
+        </section>
     </main>
     <footer>
-        
+        <div >
+            <img id="logoV" src="img/LogoV.png" alt="">
+        </div>
     </footer>
 </body>
 
