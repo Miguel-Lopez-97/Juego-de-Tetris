@@ -9,7 +9,7 @@ const FPS = 60;
 
     //Colors
 let block = "white"
-let fondo ="#007D5F"
+let fondo ="#7D0000"
 
 //Scenary Array
 

@@ -3,25 +3,26 @@
     padding: 0;
 }
 body{
-    background-color: #007D5F;
+    background-color: #7D0000;
     display: flex;
     flex-direction: column;
 }
 .button{
     height: 7vh;
-    margin-top: 0rem;
-    padding-left: 1vw;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0.5rem;
     border: none;
     background: none;
 }
 /*Header*/
 #logo{
-    font-size: max(36px, 15vw);
+    height: 10vh;
 }
 header{
     display: flex;
     height: 10vh;
-    margin: 1rem;
+    padding: 1rem;
     justify-content: space-evenly;
 }
 
@@ -53,13 +54,12 @@ h2{ text-align: center;
         
 .gameBoard{
     display: block;
-    margin: auto;
-    margin-top: 2vh;
-    padding: auto;
+    align-items: center;
+    justify-content: center;
 }
         
 canvas{
-    height: 116,7vw; max-height: 65vh;
+    height: 116vw,7vw; max-height: 65vh;
     width: 70vw; max-width: 39vh;
     border: 2px solid white;
 }
@@ -68,7 +68,7 @@ canvas{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 9vh;
+    height: 10vh;
     width: 70vw; max-width: 39vh;
 }
 #button__refresh2{
@@ -77,60 +77,73 @@ canvas{
 
 footer{
     display: flex;
-    height: 10vh;
-    bottom: 0;
+    height: 9vh;
+    padding: 0.2rem;
     justify-content: space-evenly;
     align-items: center;
+    box-shadow: 0px 4px 5px 8px #000000;
+    background-color: rgba(0, 0, 0, 0.33);;
 }
 #logoV{
-    width: 18vw; max-width: 8vw;
+    width: 60px;
 }
 @media screen and (min-width:800px){
-    #logo{
+#logo{
     justify-content: space-evenly;
     align-items: center;
-    
-    }
-    #refresh1{
-        display: none;
-    }
-    main{
-        height: 75vh;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
+    height: 12vw;
+}
+#refresh1{
+    display: none;
+}
+main{
+    height: 75vh;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-evenly;
+}
 section{
+    display: flex;
     margin: auto;
-    width: 33vw;
-    align-items: center;
-    }
+    width: 23%;
+}
     
 .gameTop{
-    flex-direction: column;
-    display: block;
-    margin: auto;
+    flex-direction: column;    
 }
 .counter{
-    width: 15vw;
-    margin: 0;
+    width: 10vw;
+    margin: 2;
+}
+#counter_time{
+    padding: 1rem;
+}
+#counter_points{
+    padding: 1rem;
 }
 h2{ text-align: center;
     align-items: center;
 }
 
-.gameBoard{
-    margin: auto;
-    
+.gameBoard{ 
+    display: flex;
 }
 .gameButton{
     flex-direction: column;
-    margin: auto;
+    align-items: center;
+    padding: auto;
 }
 .playButton{
     flex-direction: row;
+    justify-content: center;
+    
 }
-#refresh{
+#up{
+    display: flex;
+    padding: 2rem;
+}
+.refresh{
     margin: 3rem;
 }
 #button__refresh2{
