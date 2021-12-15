@@ -17,9 +17,11 @@
 <body onload="init();">
     <header>
         <img id="logo" src="img/tetris_logo.png" alt="">
-        <button class="button" id="refresh1" onclick="init()">
-            <img src="img/refresh.png" alt="">
-        </button>
+        <a href="">
+            <button onclick="fReset(true)" class="btn"> 
+            <img id="refreshpng" src="img/refresh.png" alt="">
+            </button>
+        </a>
     </header>
     <main>
         <section class="gameTop">
@@ -40,10 +42,13 @@
         </section>
         <section class="gameButton">
             <div class="refresh">
-                <button class="button" id="button__refresh2" onclick="init()">
+                <a href="">
+                    <button onclick="fReset(true)" class="btn"> 
                     <img id="refreshpng" src="img/refresh.png" alt="">
-                    <p>REFRESH</p>
-                </button>
+                    </button>
+                </a>
+                <p>REFRESH</p>
+                    
             </div>
             <div class="playButton">
                 <button class="button" id="left" onclick="player.left()"><img class="button" src="img/left.png" alt=""> </button>
