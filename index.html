@@ -17,7 +17,7 @@
 <body onload="init();">
     <header>
         <img id="logo" src="img/tetris_logo.png" alt="">
-        <button class="button" id="refresh1" onclick="up()">
+        <button class="button" id="refresh1" onclick="init()">
             <img src="img/refresh.png" alt="">
         </button>
     </header>
@@ -36,7 +36,7 @@
             </div>
         </section>
         <section class="gameBoard">
-            <canvas id="canva" width="375" height="500"></canvas>
+            <canvas id="canva" width="425" height="500"></canvas>
         </section>
         <section class="gameButton">
             <div class="refresh">
@@ -45,7 +45,7 @@
                     <p>REFRESH</p>
                 </button>
             </div>
-            <div class="gameButton playButton">
+            <div class="playButton">
                 <button class="button" id="left" onclick="player.left()"><img class="button" src="img/left.png" alt=""> </button>
                 <button class="button" id="down" onclick="player.down()"><img class="button" src="img/down.png" alt=""> </button>
                 <button class="button" id="right" onclick="player.right()"><img class="button" src="img/right.png" alt=""> </button>

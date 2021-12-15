@@ -10,6 +10,7 @@ const FPS = 60;
     //Colors
 let block = "white"
 let fondo ="#7D0000"
+let marginBlock = "#3b0000"
 
 //Scenary Array
 
@@ -19,8 +20,10 @@ let rows = 20;
 let scenary = new Array(rows)
     for (let n=0; n<rows;n++){
         scenary[n]=new Array(columns)
-            for( let m=0; m<columns; m++){
+            for( let m=1; m<columns+1; m++){
+                scenary[n][0]=2;
                 scenary[n][m]=0;
+                scenary[n][columns+1]=2;
             }
         }
     for (let n=20; n<21;n++){
@@ -86,12 +89,13 @@ let newBlocks = function () {
                 //verifica la coliciòn lateralmente
                 if(scenary[this.y+i+1][this.x+j]==0){
                     //Izq
-                    if(scenary[this.y+i][this.x+j-1]==1)                
+                    if(scenary[this.y+i][this.x+j-1]==1 ||scenary[this.y+i][this.x+j-1]==2)                
                     {   this.colisionLeft = true
                         this.colisionRight = false
+                        this.colision = false
                         }
                     //Der
-                    else if(scenary[this.y+i][this.x+j+1]==1){
+                    else if(scenary[this.y+i][this.x+j+1]==1||scenary[this.y+i][this.x+j+1]==2){
                         this.colisionRight = true
                         this.colisionLeft = false
                       }
@@ -320,10 +324,11 @@ function drawScenary() {
         for(    x=0;    x<scenary[y].length;    x++){
                 if( scenary[y][x] ==    0){color    =   fondo}
                 if( scenary[y][x] ==    1){color    =   block}
+                if( scenary[y][x] ==    2){color    =   marginBlock}
                 ctx.fillStyle   =   color
                 ctx.fillRect(   x*widthC,  y*heightC,  widthC, heightC)
                 ctx.strokeStyle = "white"
-                ctx.strokeRect(   x*widthC,  y*heightC,  widthC, heightC)
+                ctx.strokeRect(  x*widthC,  y*heightC,  widthC, heightC)
                 
             }
     }
@@ -345,8 +350,8 @@ function time(){
     this.hoursNow = timeNow.getHours();
     this.minutesNow  = timeNow.getMinutes();
     this.segNow  = timeNow.getSeconds();
-    this.hours = this.hoursNow-this.hoursInit
-    this.minutes = this.minutesNow-this.minutesInit
+    this.hours = Math.abs(this.hoursNow-this.hoursInit)
+    this.minutes = Math.abs(this.minutesNow-this.minutesInit)
     this.seg = Math.abs(this.segInit-this.segNow)
     time_box.innerHTML=this.hours+':'+this.minutes+':'+this.seg}
 
@@ -357,6 +362,7 @@ function init(){
     ctx=canvas.getContext("2d")
     time_box=document.getElementById("counter_time")
     timeInit()
+    
     
     player = new newBlocks()
     player.aleatorio()
@@ -370,8 +376,7 @@ function init(){
 
     setInterval(
         function () {principal()},
-        200/FPS)
-    
+        100/FPS)
 }
 
 function principal(){
