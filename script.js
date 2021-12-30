@@ -355,10 +355,10 @@ function drawScenary() {
 
 //Tiempo
 let time_box;
-let seg = 55;
+let seg = 0;
 let min = 0;
 let hour = 0;
-let speed = 1;
+let speed = 1.5;
 
 function time() {
   this.hours = hour;
