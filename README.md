@@ -1,4 +1,4 @@
-# tetris Game
+# TETRIS Game
 
 _Este proyecto es un juego de Tetris clasico desarrollado para la compañía juegos_
 
