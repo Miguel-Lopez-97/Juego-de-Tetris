@@ -24,7 +24,7 @@ En el repositorio das click en el botón verde que dice code y seleccionas la ma
 
 ## Despliegue 📦
 
-_El despliegue de este proyecto se hizo en [**netlify**](miguel-lopez-valentina-rippe-tetris-game.netlify.app)_
+_El despliegue de este proyecto se hizo en [**netlify**](https://miguel-lopez-valentina-rippe-tetris-game.netlify.app)_
 
 ## Construido con 🛠️
 
